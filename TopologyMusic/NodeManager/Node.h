@@ -18,6 +18,10 @@
 @interface Node : NSObject
 
 @property(nonatomic, retain) IndexPath *indexPath;
+@property(nonatomic, retain) NSMutableArray<Node *> *parents;
+@property(nonatomic, retain) NSMutableArray<Node *> *children;
+
+@property (nonatomic) NSInteger value;
 
 @end
 

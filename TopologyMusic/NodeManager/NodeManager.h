@@ -14,6 +14,7 @@
 + (id) getInstance;
 
 - (void) actionFillHole;
-- (void) debugNodeMap;
+- (void) actionMakeBridge;
+- (void) debug;
 
 @end

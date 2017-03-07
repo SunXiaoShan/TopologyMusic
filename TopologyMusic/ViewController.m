@@ -19,8 +19,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    NSLog(@"step 1");
     [[NodeManager getInstance] actionFillHole];
-    [[NodeManager getInstance] debugNodeMap];
+    NSLog(@"step 2");
+    [[NodeManager getInstance] actionMakeBridge];
+    NSLog(@"debug");
+    [[NodeManager getInstance] debug];
 }
 
 

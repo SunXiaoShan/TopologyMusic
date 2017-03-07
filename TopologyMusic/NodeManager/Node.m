@@ -10,4 +10,12 @@
 
 @implementation Node
 
+- (id) init {
+    self = [super init];
+    self.parents = [[NSMutableArray alloc] init];
+    self.children = [[NSMutableArray alloc] init];
+    
+    return self;
+}
+
 @end
