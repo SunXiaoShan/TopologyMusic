@@ -14,8 +14,14 @@
     self = [super init];
     self.parents = [[NSMutableArray alloc] init];
     self.children = [[NSMutableArray alloc] init];
-    
+    _nodeId = [Utility getSerialNumber];
+    self.value = RAND_FROM_TO(1, 7);
     return self;
+}
+
+- (void) removeRelationshipNodes {
+    [self.parents removeAllObjects];
+    [self.children removeAllObjects];
 }
 
 @end

@@ -1,8 +1,8 @@
 //
-//  Uility.h
+//  Utility.h
 //  TopologyMusic
 //
-//  Created by Phineas_Huang on 07/03/2017.
+//  Created by Phineas_Huang on 08/03/2017.
 //  Copyright © 2017 SunXiaoShan. All rights reserved.
 //
 
@@ -13,6 +13,8 @@
 
 #define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
 
-@interface Uility : NSObject
+@interface Utility : NSObject
+
++ (NSString *) getSerialNumber;
 
 @end

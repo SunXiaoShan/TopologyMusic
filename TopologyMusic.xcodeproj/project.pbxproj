@@ -17,7 +17,7 @@
 		8FCBD7681E6EDBF1005E5FC2 /* TopologyMusicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD7671E6EDBF1005E5FC2 /* TopologyMusicUITests.m */; };
 		8FCBD7751E6EF4C0005E5FC2 /* NodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD7741E6EF4C0005E5FC2 /* NodeManager.m */; };
 		8FCBD7781E6EF536005E5FC2 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD7771E6EF536005E5FC2 /* Node.m */; };
-		8FCBD77F1E6EFE1C005E5FC2 /* Uility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD77E1E6EFE1C005E5FC2 /* Uility.m */; };
+		8FCBD7821E6FC8EE005E5FC2 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD7811E6FC8EE005E5FC2 /* Utility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,8 @@
 		8FCBD7761E6EF536005E5FC2 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		8FCBD7771E6EF536005E5FC2 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
 		8FCBD77C1E6EFDBE005E5FC2 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		8FCBD77D1E6EFE1C005E5FC2 /* Uility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uility.h; sourceTree = "<group>"; };
-		8FCBD77E1E6EFE1C005E5FC2 /* Uility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uility.m; sourceTree = "<group>"; };
+		8FCBD7801E6FC8EE005E5FC2 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		8FCBD7811E6FC8EE005E5FC2 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +141,8 @@
 		8FCBD77A1E6EFD68005E5FC2 /* Uility */ = {
 			isa = PBXGroup;
 			children = (
-				8FCBD77D1E6EFE1C005E5FC2 /* Uility.h */,
-				8FCBD77E1E6EFE1C005E5FC2 /* Uility.m */,
+				8FCBD7801E6FC8EE005E5FC2 /* Utility.h */,
+				8FCBD7811E6FC8EE005E5FC2 /* Utility.m */,
 			);
 			path = Uility;
 			sourceTree = "<group>";
@@ -251,11 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCBD7821E6FC8EE005E5FC2 /* Utility.m in Sources */,
 				8FCBD7581E6EDBF1005E5FC2 /* TopologyMusic.xcdatamodeld in Sources */,
 				8FCBD7521E6EDBF1005E5FC2 /* ViewController.m in Sources */,
 				8FCBD74F1E6EDBF1005E5FC2 /* AppDelegate.m in Sources */,
 				8FCBD74C1E6EDBF1005E5FC2 /* main.m in Sources */,
-				8FCBD77F1E6EFE1C005E5FC2 /* Uility.m in Sources */,
 				8FCBD7751E6EF4C0005E5FC2 /* NodeManager.m in Sources */,
 				8FCBD7781E6EF536005E5FC2 /* Node.m in Sources */,
 			);

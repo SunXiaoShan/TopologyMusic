@@ -21,7 +21,10 @@
 @property(nonatomic, retain) NSMutableArray<Node *> *parents;
 @property(nonatomic, retain) NSMutableArray<Node *> *children;
 
+@property (nonatomic, readonly) NSString *nodeId;
 @property (nonatomic) NSInteger value;
+
+- (void) removeRelationshipNodes;
 
 @end
 
