@@ -13,8 +13,14 @@
 
 + (id) getInstance;
 
+- (NSMutableArray *) getNodesMap;
+
+- (Node *) getStartNode;
+- (Node *) getEndNode;
+
 - (void) actionFillHole;
 - (void) actionMakeBridge;
+- (void) actionCaculateMinPath;
 - (void) debug;
 
 @end

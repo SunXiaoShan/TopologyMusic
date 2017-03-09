@@ -12,11 +12,15 @@
 @interface NodeManager () {
     NSMutableArray *topologyMap;
     NSMutableArray *topologyNodeMap;
+    NSMutableDictionary *dictNodes;
     BOOL isFirstFillHole;
     NSInteger nodeCount;
     
     Node *startNode;
     Node *endNode;
+    
+    NSMutableArray<Node *> *minPathList;
+    NSInteger minResult;
 }
 @end
 
@@ -36,35 +40,33 @@ static NodeManager *instance = nil;
     return instance;
 }
 
-#pragma mark - private functions
+#pragma mark - init functions
 
 - (id) init {
     self = [super init];
     [self resetVariable];
     startNode = [[Node alloc] init];
+    startNode.isMinPath = YES;
     endNode = [[Node alloc] init];
+    endNode.value = 0;
+    endNode.isMinPath = YES;
+    dictNodes = [[NSMutableDictionary alloc] init];
     return self;
 }
 
-- (int) getTotalNodes {
-    return RAND_FROM_TO(9, 12);
+- (NSMutableArray *) getNodesMap {
+    return topologyMap;
 }
 
-- (void) resetVariable {
-    // reset array map
-    topologyMap = [[NSMutableArray alloc] initWithCapacity: MAX_SECTION];
-    topologyNodeMap = [[NSMutableArray alloc] initWithCapacity: MAX_SECTION];
-    for (int i=0; i<MAX_SECTION; i++) {
-        // TODO
-        [topologyMap insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",nil] atIndex:i];
-        [topologyNodeMap addObject:[[NSMutableArray alloc] init]];
-    }
-    
-    isFirstFillHole = YES;
-    nodeCount = 0;
+- (Node *) getStartNode {
+    return startNode;
 }
 
-#pragma mark - public functions
+- (Node *) getEndNode {
+    return endNode;
+}
+
+#pragma mark - action functions
 
 - (void) actionFillHole {
     
@@ -90,6 +92,7 @@ static NodeManager *instance = nil;
             Node *node = [[Node alloc] init];
             topologyMap[section][row] = node;
             [topologyNodeMap[section] addObject:node];
+            [dictNodes setObject:node forKey:node.nodeId];
             section ++;
             buf--;
         }
@@ -99,6 +102,80 @@ static NodeManager *instance = nil;
             section = 0;
         }
     }
+}
+
+- (void) actionMakeBridge {
+    
+    [self resetRelationshipNodes];
+    
+    [self handleParentNodes];
+    [self handleChildrenNodes];
+    
+    [self handleThreeNodes];
+    [self handleExistTwoChildrenNodes];
+}
+
+- (void) actionCaculateMinPath {
+    minPathList = [[NSMutableArray alloc] init];
+    minResult = 99999999;
+    
+    for (NSString *nId in dictNodes) {
+        Node *node = dictNodes[nId];
+        node.isMinPath = NO;
+    }
+    
+    [self deepSearch:0
+          resultList:[[NSMutableArray alloc] init]
+         currentNode:startNode];
+    
+    for (Node *node in minPathList) {
+        Node *n = dictNodes[node.nodeId];
+        n.isMinPath = YES;
+    }
+    
+    [self debugMinPath];
+}
+
+#pragma mark - private function
+
+- (void) deepSearch:(NSInteger)result
+         resultList:(NSMutableArray *)resultList
+        currentNode:(Node *)node {
+    
+    if ([node.nodeId isEqualToString:endNode.nodeId]) {
+        if (minResult > result) {
+            minResult = result;
+            minPathList = resultList;
+        }
+        return;
+    }
+    
+    for (Node *next in node.children) {
+        NSInteger _result = result + next.value;
+        NSMutableArray *list = [resultList mutableCopy];
+        [list addObject:next];
+        [self deepSearch:_result resultList:list  currentNode:next];
+    }
+}
+
+- (int) getTotalNodes {
+    return RAND_FROM_TO(9, 12);
+}
+
+- (void) resetVariable {
+    // reset array map
+    topologyMap = [[NSMutableArray alloc] initWithCapacity: MAX_SECTION];
+    topologyNodeMap = [[NSMutableArray alloc] initWithCapacity: MAX_SECTION];
+    [dictNodes removeAllObjects];
+
+    for (int i=0; i<MAX_SECTION; i++) {
+        // TODO
+        [topologyMap insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",nil] atIndex:i];
+        [topologyNodeMap addObject:[[NSMutableArray alloc] init]];
+    }
+    
+    isFirstFillHole = YES;
+    nodeCount = 0;
 }
 
 - (void) handleParentNodes {
@@ -178,12 +255,17 @@ static NodeManager *instance = nil;
             Node *n = current[row];
             NSInteger index = RAND_FROM_TO(0, [buf count]-1);
             Node *cmp = buf[index];
+            
             if ([n.children count] == 0) {
-                if (![n.nodeId isEqualToString:cmp.nodeId]) {
+                if ([n.nodeId isEqualToString:cmp.nodeId]) {
                     row--;
                     continue;
                 }
-                if ([cmp.children containsObject:n]) {
+                if ([n.parents containsObject:cmp]) {
+                    row--;
+                    continue;
+                }
+                if ([n.children containsObject:cmp]) {
                     row--;
                     continue;
                 }
@@ -221,18 +303,17 @@ static NodeManager *instance = nil;
                 row--;
                 continue;
             }
+            if ([n.parents containsObject:cmp]) {
+                row--;
+                continue;
+            }
             [n.children addObject:cmp];
             [cmp.parents addObject:n];
         }
     }
 }
 
-- (void) actionMakeBridge {
-    
-    [self resetRelationshipNodes];
-    
-    [self handleParentNodes];
-    [self handleChildrenNodes];
+- (void) handleThreeNodes {
     
     if (![self isExistThreeChildrenNode]) {
         NSMutableArray *buf = [[NSMutableArray alloc] init];
@@ -297,27 +378,65 @@ static NodeManager *instance = nil;
             }
         }
     }
-    
+}
+
+- (void) handleExistTwoChildrenNodes {
     NSInteger count = [self hasExistTwoChildrenNodesInInternal];
     if (count < 3) {
         for (int section=0; section<[topologyNodeMap count]-1; section++) {
-            for (int row=0; row<[topologyNodeMap[section] count]; row++) {
+            NSMutableArray *temp = topologyNodeMap[section];
+            NSMutableArray *nextTemp = topologyNodeMap[section+1];
+            NSMutableArray *listTemp = [[NSMutableArray alloc] init];
+            Node *n_0 = temp[0];
+            [listTemp addObject:n_0];
+            Node *n_1 = [temp count]>1?temp[1]:NULL;
+            if (n_1) {
+                [listTemp addObject:n_1];
+            }
+            Node *n_2 = [temp count]>2?temp[2]:NULL;
+            if (n_2) {
+                [listTemp addObject:n_2];
+            }
+            Node *next_0 = nextTemp[0];
+            [listTemp addObject:next_0];
+            Node *next_1 = [nextTemp count]>1?nextTemp[1]:NULL;
+            if (next_1) {
+                [listTemp addObject:next_1];
+            }
+            Node *next_2 = [nextTemp count]>2?nextTemp[2]:NULL;
+            if (next_2) {
+                [listTemp addObject:next_2];
+            }
+            
+            for (int row=0; row<[temp count]; row++) {
                 Node *node = topologyNodeMap[section][row];
                 if ([node.children count] == 1) {
-                    
+                    for (int try=0; try<[listTemp count]; try++) {
+                        Node *t = listTemp[try];
+                        if ([node.nodeId isEqualToString:t.nodeId]) {
+                            continue;
+                        }
+                        if ([node.parents containsObject:t]) {
+                            continue;
+                        }
+                        if ([node.children containsObject:t]) {
+                            continue;
+                        }
+                        [node.children addObject:t];
+                        [t.parents addObject:node];
+                        count ++;
+                        break;
+                    }
+                    if ([node.children count] >= 2) {
+                        break;
+                    }
                 }
-                
+            }
+            if (count >= 3) {
+                break;
             }
         }
     }
-    
-    NSInteger is2Node = [self hasExistTwoChildrenNodesInInternal];
-    NSInteger is3Node = [self isExistThreeChildrenNode];
-    
-    
-    NSLog(@"is3Node :%d is2Node:%ld", is3Node, (long)is2Node);
-    int test = 4234;
-
 }
 
 - (BOOL) isExistThreeChildrenNode {
@@ -338,7 +457,11 @@ static NodeManager *instance = nil;
 
 - (void) resetRelationshipNodes {
     [startNode removeRelationshipNodes];
+    startNode.value = 0;
+    startNode.isMinPath = YES;
     [endNode removeRelationshipNodes];
+    endNode.value = 0;
+    endNode.isMinPath = YES;
     
     for (int section=0; section<[topologyNodeMap count]; section++) {
         for (int row=0; row<[topologyNodeMap[section] count]; row++) {
@@ -358,7 +481,6 @@ static NodeManager *instance = nil;
             }
         }
     }
-    
     return result;
 }
 
@@ -366,11 +488,20 @@ static NodeManager *instance = nil;
 
 - (void) debug {
     [self debugNodeCount];
+    [self debugSpecialCase];
     [self debugNodeMap];
+    [self debugForNodeSelf];
 }
 
 - (void) debugNodeCount {
     NSLog(@"node count: %ld", (long)nodeCount);
+}
+
+- (void) debugSpecialCase {
+    NSInteger is2Node = [self hasExistTwoChildrenNodesInInternal];
+    NSInteger is3Node = [self isExistThreeChildrenNode];
+    
+    NSLog(@"is3Node:%ld is2Node:%ld", (long)is3Node, (long)is2Node);
 }
 
 - (void) debugNodeMap {
@@ -418,7 +549,34 @@ static NodeManager *instance = nil;
     }
     NSLog(@"map %@", str);
     NSLog(@"bridge = parent:%ld children:%ld", sumParent, sumChildren);
-    
+}
+
+- (void) debugForNodeSelf {
+    NSMutableString *strParents = [[NSMutableString alloc] init];
+    NSMutableString *strChildren = [[NSMutableString alloc] init];
+    for (NSMutableArray *sec in topologyNodeMap) {
+        for (Node *node in sec) {
+            if ([node.children containsObject:node]) {
+                [strChildren appendFormat:@"%@ ", node.nodeId];
+                continue;
+            }
+            if ([node.parents containsObject:node]) {
+                [strParents appendFormat:@"%@ ", node.nodeId];
+                continue;
+            }
+        }
+    }
+    NSLog(@"loop => parents:%@ children:%@", strParents, strChildren);
+}
+
+- (void) debugMinPath {
+    NSLog(@"min result:%ld" , (long)minResult);
+    NSMutableString *str = [[NSMutableString alloc] init];
+    for (Node *n in minPathList) {
+        [str appendFormat:@"%@, ", n.nodeId];
+    }
+    NSLog(@"min path list: %@", str);
+    NSLog(@"min start:%@ end:%@", startNode.nodeId, endNode.nodeId);
 }
 
 

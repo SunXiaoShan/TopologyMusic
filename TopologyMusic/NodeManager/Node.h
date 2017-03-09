@@ -8,21 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IndexPath : NSObject
-
-@property(nonatomic, retain) IndexPath *indexPath;
-@property (nonatomic) NSInteger section;
-@property (nonatomic) NSInteger row;
-@end
-
 @interface Node : NSObject
 
-@property(nonatomic, retain) IndexPath *indexPath;
 @property(nonatomic, retain) NSMutableArray<Node *> *parents;
 @property(nonatomic, retain) NSMutableArray<Node *> *children;
 
 @property (nonatomic, readonly) NSString *nodeId;
 @property (nonatomic) NSInteger value;
+@property (nonatomic) BOOL isMinPath;
+@property (nonatomic) NSInteger btnTag;
 
 - (void) removeRelationshipNodes;
 

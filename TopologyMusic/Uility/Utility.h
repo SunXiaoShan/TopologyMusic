@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DrawView.h"
 
 #define MAX_SECTION 5
 #define MAX_ROW 3
