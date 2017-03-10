@@ -20,6 +20,18 @@
 		8FCBD7821E6FC8EE005E5FC2 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD7811E6FC8EE005E5FC2 /* Utility.m */; };
 		8FCBD7871E70E596005E5FC2 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD7861E70E596005E5FC2 /* CustomButton.m */; };
 		8FCBD78C1E71007E005E5FC2 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD78B1E71007E005E5FC2 /* DrawView.m */; };
+		8FFD6BF31E71B9C800654AF5 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFD6BF21E71B9C800654AF5 /* AudioManager.m */; };
+		8FFD6BF61E71BA2F00654AF5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FFD6BF51E71BA2F00654AF5 /* AudioToolbox.framework */; };
+		8FFD6BF81E71BA5F00654AF5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FFD6BF71E71BA5F00654AF5 /* Security.framework */; };
+		8FFD6BFA1E71BA6700654AF5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FFD6BF91E71BA6700654AF5 /* CoreGraphics.framework */; };
+		8FFD6C041E72440000654AF5 /* 316898__jaz-the-man-2__do.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6BFC1E72440000654AF5 /* 316898__jaz-the-man-2__do.wav */; };
+		8FFD6C051E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6BFD1E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav */; };
+		8FFD6C061E72440000654AF5 /* 316902__jaz-the-man-2__la.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6BFE1E72440000654AF5 /* 316902__jaz-the-man-2__la.wav */; };
+		8FFD6C071E72440000654AF5 /* 316904__jaz-the-man-2__fa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6BFF1E72440000654AF5 /* 316904__jaz-the-man-2__fa.wav */; };
+		8FFD6C081E72440000654AF5 /* 316906__jaz-the-man-2__mi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C001E72440000654AF5 /* 316906__jaz-the-man-2__mi.wav */; };
+		8FFD6C091E72440000654AF5 /* 316908__jaz-the-man-2__re.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C011E72440000654AF5 /* 316908__jaz-the-man-2__re.wav */; };
+		8FFD6C0A1E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C021E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav */; };
+		8FFD6C0B1E72440000654AF5 /* 316913__jaz-the-man-2__si.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C031E72440000654AF5 /* 316913__jaz-the-man-2__si.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +70,19 @@
 		8FCBD7861E70E596005E5FC2 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		8FCBD78A1E71007E005E5FC2 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
 		8FCBD78B1E71007E005E5FC2 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		8FFD6BF11E71B9C800654AF5 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		8FFD6BF21E71B9C800654AF5 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
+		8FFD6BF51E71BA2F00654AF5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8FFD6BF71E71BA5F00654AF5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8FFD6BF91E71BA6700654AF5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8FFD6BFC1E72440000654AF5 /* 316898__jaz-the-man-2__do.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316898__jaz-the-man-2__do.wav"; sourceTree = "<group>"; };
+		8FFD6BFD1E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316901__jaz-the-man-2__do-octave.wav"; sourceTree = "<group>"; };
+		8FFD6BFE1E72440000654AF5 /* 316902__jaz-the-man-2__la.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316902__jaz-the-man-2__la.wav"; sourceTree = "<group>"; };
+		8FFD6BFF1E72440000654AF5 /* 316904__jaz-the-man-2__fa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316904__jaz-the-man-2__fa.wav"; sourceTree = "<group>"; };
+		8FFD6C001E72440000654AF5 /* 316906__jaz-the-man-2__mi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316906__jaz-the-man-2__mi.wav"; sourceTree = "<group>"; };
+		8FFD6C011E72440000654AF5 /* 316908__jaz-the-man-2__re.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316908__jaz-the-man-2__re.wav"; sourceTree = "<group>"; };
+		8FFD6C021E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316912__jaz-the-man-2__sol.wav"; sourceTree = "<group>"; };
+		8FFD6C031E72440000654AF5 /* 316913__jaz-the-man-2__si.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316913__jaz-the-man-2__si.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FFD6BFA1E71BA6700654AF5 /* CoreGraphics.framework in Frameworks */,
+				8FFD6BF81E71BA5F00654AF5 /* Security.framework in Frameworks */,
+				8FFD6BF61E71BA2F00654AF5 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +112,7 @@
 				8FCBD7491E6EDBF1005E5FC2 /* TopologyMusic */,
 				8FCBD7661E6EDBF1005E5FC2 /* TopologyMusicUITests */,
 				8FCBD7481E6EDBF1005E5FC2 /* Products */,
+				8FFD6BF41E71BA2F00654AF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +128,7 @@
 		8FCBD7491E6EDBF1005E5FC2 /* TopologyMusic */ = {
 			isa = PBXGroup;
 			children = (
+				8FFD6BF01E71B97700654AF5 /* AudioManager */,
 				8FCBD7891E71005D005E5FC2 /* DrawLine */,
 				8FCBD7841E70E460005E5FC2 /* CustomButton */,
 				8FCBD77A1E6EFD68005E5FC2 /* Uility */,
@@ -114,6 +144,7 @@
 				8FCBD7561E6EDBF1005E5FC2 /* TopologyMusic.xcdatamodeld */,
 				8FCBD74A1E6EDBF1005E5FC2 /* Supporting Files */,
 				8FCBD77C1E6EFDBE005E5FC2 /* PrefixHeader.pch */,
+				8FFD6BFB1E72440000654AF5 /* source */,
 			);
 			path = TopologyMusic;
 			sourceTree = "<group>";
@@ -171,6 +202,40 @@
 				8FCBD78B1E71007E005E5FC2 /* DrawView.m */,
 			);
 			path = DrawLine;
+			sourceTree = "<group>";
+		};
+		8FFD6BF01E71B97700654AF5 /* AudioManager */ = {
+			isa = PBXGroup;
+			children = (
+				8FFD6BF11E71B9C800654AF5 /* AudioManager.h */,
+				8FFD6BF21E71B9C800654AF5 /* AudioManager.m */,
+			);
+			path = AudioManager;
+			sourceTree = "<group>";
+		};
+		8FFD6BF41E71BA2F00654AF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FFD6BF91E71BA6700654AF5 /* CoreGraphics.framework */,
+				8FFD6BF71E71BA5F00654AF5 /* Security.framework */,
+				8FFD6BF51E71BA2F00654AF5 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8FFD6BFB1E72440000654AF5 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				8FFD6BFC1E72440000654AF5 /* 316898__jaz-the-man-2__do.wav */,
+				8FFD6BFD1E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav */,
+				8FFD6BFE1E72440000654AF5 /* 316902__jaz-the-man-2__la.wav */,
+				8FFD6BFF1E72440000654AF5 /* 316904__jaz-the-man-2__fa.wav */,
+				8FFD6C001E72440000654AF5 /* 316906__jaz-the-man-2__mi.wav */,
+				8FFD6C011E72440000654AF5 /* 316908__jaz-the-man-2__re.wav */,
+				8FFD6C021E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav */,
+				8FFD6C031E72440000654AF5 /* 316913__jaz-the-man-2__si.wav */,
+			);
+			path = source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +322,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FFD6C061E72440000654AF5 /* 316902__jaz-the-man-2__la.wav in Resources */,
+				8FFD6C0A1E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav in Resources */,
+				8FFD6C091E72440000654AF5 /* 316908__jaz-the-man-2__re.wav in Resources */,
 				8FCBD75D1E6EDBF1005E5FC2 /* LaunchScreen.storyboard in Resources */,
 				8FCBD75A1E6EDBF1005E5FC2 /* Assets.xcassets in Resources */,
+				8FFD6C041E72440000654AF5 /* 316898__jaz-the-man-2__do.wav in Resources */,
+				8FFD6C071E72440000654AF5 /* 316904__jaz-the-man-2__fa.wav in Resources */,
+				8FFD6C0B1E72440000654AF5 /* 316913__jaz-the-man-2__si.wav in Resources */,
 				8FCBD7551E6EDBF1005E5FC2 /* Main.storyboard in Resources */,
+				8FFD6C051E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav in Resources */,
+				8FFD6C081E72440000654AF5 /* 316906__jaz-the-man-2__mi.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +358,7 @@
 				8FCBD74C1E6EDBF1005E5FC2 /* main.m in Sources */,
 				8FCBD7751E6EF4C0005E5FC2 /* NodeManager.m in Sources */,
 				8FCBD7781E6EF536005E5FC2 /* Node.m in Sources */,
+				8FFD6BF31E71B9C800654AF5 /* AudioManager.m in Sources */,
 				8FCBD78C1E71007E005E5FC2 /* DrawView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +558,7 @@
 				8FCBD76E1E6EDBF1005E5FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FCBD76F1E6EDBF1005E5FC2 /* Build configuration list for PBXNativeTarget "TopologyMusicUITests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +567,7 @@
 				8FCBD7711E6EDBF1005E5FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

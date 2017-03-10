@@ -17,6 +17,7 @@
 
 - (Node *) getStartNode;
 - (Node *) getEndNode;
+- (NSArray<Node *> *) getMinPathList;
 
 - (void) actionFillHole;
 - (void) actionMakeBridge;

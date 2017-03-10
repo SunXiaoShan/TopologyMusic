@@ -66,6 +66,10 @@ static NodeManager *instance = nil;
     return endNode;
 }
 
+- (NSArray<Node *> *) getMinPathList {
+    return [minPathList copy];
+}
+
 #pragma mark - action functions
 
 - (void) actionFillHole {

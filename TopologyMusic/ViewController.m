@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "NodeManager.h"
 #import "CustomButton.h"
+#import "AudioManager.h"
 
 
 @interface ViewController ()
@@ -49,6 +50,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self initVariable];
+    [self settButtonAction];
     
     NSLog(@"step 1");
     [[NodeManager getInstance] actionFillHole];
@@ -68,6 +70,30 @@
     [btnList insertObject:[NSMutableArray arrayWithObjects:_btn41,_btn42,_btn43,nil] atIndex:3];
     [btnList insertObject:[NSMutableArray arrayWithObjects:_btn51,_btn52,_btn53,nil] atIndex:4];
 }
+
+- (void) settButtonAction {
+    
+    [_btn11 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn12 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn13 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_btn21 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn22 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn23 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_btn31 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn32 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn33 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_btn41 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn42 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn43 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_btn51 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn52 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+    [_btn53 addTarget:self action:@selector(actionPlayTone:) forControlEvents:UIControlEventTouchUpInside];
+}
+
 
 - (void) resetNodes {
     [[NodeManager getInstance] actionFillHole];
@@ -102,14 +128,7 @@
     [btnDict setObject:_btnStart forKey:_btnStart.node.nodeId];
     [btnDict setObject:_btnEnd forKey:_btnEnd.node.nodeId];
     
-    
     [self drawArrowLine];
-    
-//    CGPoint point1 = CGPointMake(250, 350);
-//    CGPoint point3 = CGPointMake(50, 50);
-//    
-//    [DrawView drawArrowLine:self.view from:point1 to:point3 color:[UIColor yellowColor]];
-
 }
 
 - (void) drawArrowLine {
@@ -170,11 +189,28 @@
 }
 
 - (IBAction)actionPlay:(id)sender {
+    NSArray *minPath = [[NodeManager getInstance] getMinPathList];
+    for (Node *node in minPath) {
+        [AudioManager playTone:node.value];
+        sleep(1);
+    }
 }
 
 - (IBAction)actionCaculate:(id)sender {
+    
+    static BOOL isCreateNode = NO;
+    if (!isCreateNode) {
+        [self actionTopology:NULL];
+        isCreateNode = YES;
+    }
+    
     [[NodeManager getInstance] actionCaculateMinPath];
     [self drawArrowLine];
+}
+
+- (void) actionPlayTone:(id)sender {
+    CustomButton *btn = sender;
+    [AudioManager playTone:btn.node.value];
 }
 
 @end
