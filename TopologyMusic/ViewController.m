@@ -16,6 +16,9 @@
 {
     NSMutableArray *btnList;
     NSMutableDictionary *btnDict;
+    
+    BOOL isCreateNode;
+    BOOL isCreateMinPath;
 }
 
 @property (weak, nonatomic) IBOutlet CustomButton *btnStart;
@@ -48,16 +51,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+//    
     [self initVariable];
     [self settButtonAction];
-    
-    NSLog(@"step 1");
-    [[NodeManager getInstance] actionFillHole];
-    NSLog(@"step 2");
-    [[NodeManager getInstance] actionMakeBridge];
-    NSLog(@"debug");
-    [[NodeManager getInstance] debug];
 }
 
 - (void) initVariable {
@@ -116,6 +112,7 @@
                 node.btnTag = btn.tag;
                 btn.hidden = NO;
                 [btn setTitle:[NSString stringWithFormat:@"%ld", node.value] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"Blue"] forState:UIControlStateNormal];
                 [btnDict setObject:btn forKey:node.nodeId];
                 
             } else {
@@ -162,6 +159,12 @@
                     } else {
                         [self drawButtonToButton:btn to:cBtn color:[UIColor blackColor]];
                     }
+                    
+                    if ([node isMinPath]) {
+                        [btn setBackgroundImage:[UIImage imageNamed:@"Red"] forState:UIControlStateNormal];
+                    } else {
+                       [btn setBackgroundImage:[UIImage imageNamed:@"Blue"] forState:UIControlStateNormal];
+                    }
                 }
             }
         }
@@ -170,12 +173,18 @@
 
 - (void) drawButtonToButton:(UIButton *)from to:(UIButton *)to color:(UIColor *)color {
     
+    float radius = 25;
+    
     CGPoint point1 = from.frame.origin;
-    point1.x += from.frame.size.width/2 + RAND_FROM_TO(1,5) - 10;
-    point1.y += from.frame.size.height/2 - 10;
+    float shift_start_x = RAND_FROM_TO(0, radius);
+    point1.x += shift_start_x + radius;
+    point1.y += sqrt(radius*radius - shift_start_x*shift_start_x)+radius;
+    
+    float shift_end_x = RAND_FROM_TO(0, radius);
     CGPoint point2 = to.frame.origin;
-    point2.x += to.frame.size.width/2 - RAND_FROM_TO(1,5) + 10;
-    point2.y += to.frame.size.height/2 - RAND_FROM_TO(1,5) + 10;
+    point2.x -= shift_end_x - radius;
+    point2.y += sqrt(radius*radius - shift_end_x*shift_end_x) + radius;
+
     [DrawView drawArrowLine:self.view from:point1 to:point2 color:color];
 }
 
@@ -186,9 +195,15 @@
 
 - (IBAction)actionTopology:(id)sender {
     [self resetNodes];
+    isCreateNode = YES;
 }
 
 - (IBAction)actionPlay:(id)sender {
+    
+    if (!isCreateMinPath) {
+        [self actionCaculate:NULL];
+    }
+    
     NSArray *minPath = [[NodeManager getInstance] getMinPathList];
     for (Node *node in minPath) {
         [AudioManager playTone:node.value];
@@ -198,17 +213,17 @@
 
 - (IBAction)actionCaculate:(id)sender {
     
-    static BOOL isCreateNode = NO;
     if (!isCreateNode) {
         [self actionTopology:NULL];
-        isCreateNode = YES;
     }
     
     [[NodeManager getInstance] actionCaculateMinPath];
     [self drawArrowLine];
+    isCreateMinPath = YES;
 }
 
 - (void) actionPlayTone:(id)sender {
+    
     CustomButton *btn = sender;
     [AudioManager playTone:btn.node.value];
 }

@@ -18,4 +18,7 @@
 
 + (NSString *) getSerialNumber;
 
++ (void) performInBackground:(NSString *) identifier executeBlock:(void (^)()) block;
++ (void) performInMainThread:(void (^)()) block;
+
 @end

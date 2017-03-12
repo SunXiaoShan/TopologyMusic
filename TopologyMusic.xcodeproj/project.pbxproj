@@ -32,6 +32,12 @@
 		8FFD6C091E72440000654AF5 /* 316908__jaz-the-man-2__re.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C011E72440000654AF5 /* 316908__jaz-the-man-2__re.wav */; };
 		8FFD6C0A1E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C021E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav */; };
 		8FFD6C0B1E72440000654AF5 /* 316913__jaz-the-man-2__si.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C031E72440000654AF5 /* 316913__jaz-the-man-2__si.wav */; };
+		8FFD6C121E7307C800654AF5 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C0F1E7307C800654AF5 /* Yellow.png */; };
+		8FFD6C131E7307C800654AF5 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C101E7307C800654AF5 /* Blue.png */; };
+		8FFD6C141E7307C800654AF5 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C111E7307C800654AF5 /* Red.png */; };
+		8FFD6C161E7310A200654AF5 /* Boarder.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C151E7310A200654AF5 /* Boarder.png */; };
+		8FFD6C181E73116B00654AF5 /* PlayToken.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C171E73116B00654AF5 /* PlayToken.png */; };
+		8FFD6C1A1E73122400654AF5 /* Action.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFD6C191E73122400654AF5 /* Action.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +89,12 @@
 		8FFD6C011E72440000654AF5 /* 316908__jaz-the-man-2__re.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316908__jaz-the-man-2__re.wav"; sourceTree = "<group>"; };
 		8FFD6C021E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316912__jaz-the-man-2__sol.wav"; sourceTree = "<group>"; };
 		8FFD6C031E72440000654AF5 /* 316913__jaz-the-man-2__si.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "316913__jaz-the-man-2__si.wav"; sourceTree = "<group>"; };
+		8FFD6C0F1E7307C800654AF5 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		8FFD6C101E7307C800654AF5 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
+		8FFD6C111E7307C800654AF5 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
+		8FFD6C151E7310A200654AF5 /* Boarder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Boarder.png; sourceTree = "<group>"; };
+		8FFD6C171E73116B00654AF5 /* PlayToken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayToken.png; sourceTree = "<group>"; };
+		8FFD6C191E73122400654AF5 /* Action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Action.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +238,15 @@
 		8FFD6BFB1E72440000654AF5 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				8FFD6C0E1E7307BA00654AF5 /* image */,
+				8FFD6C0D1E73079E00654AF5 /* audio */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		8FFD6C0D1E73079E00654AF5 /* audio */ = {
+			isa = PBXGroup;
+			children = (
 				8FFD6BFC1E72440000654AF5 /* 316898__jaz-the-man-2__do.wav */,
 				8FFD6BFD1E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav */,
 				8FFD6BFE1E72440000654AF5 /* 316902__jaz-the-man-2__la.wav */,
@@ -235,7 +256,20 @@
 				8FFD6C021E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav */,
 				8FFD6C031E72440000654AF5 /* 316913__jaz-the-man-2__si.wav */,
 			);
-			path = source;
+			name = audio;
+			sourceTree = "<group>";
+		};
+		8FFD6C0E1E7307BA00654AF5 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				8FFD6C191E73122400654AF5 /* Action.png */,
+				8FFD6C171E73116B00654AF5 /* PlayToken.png */,
+				8FFD6C151E7310A200654AF5 /* Boarder.png */,
+				8FFD6C0F1E7307C800654AF5 /* Yellow.png */,
+				8FFD6C101E7307C800654AF5 /* Blue.png */,
+				8FFD6C111E7307C800654AF5 /* Red.png */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,17 +356,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FFD6C131E7307C800654AF5 /* Blue.png in Resources */,
 				8FFD6C061E72440000654AF5 /* 316902__jaz-the-man-2__la.wav in Resources */,
 				8FFD6C0A1E72440000654AF5 /* 316912__jaz-the-man-2__sol.wav in Resources */,
 				8FFD6C091E72440000654AF5 /* 316908__jaz-the-man-2__re.wav in Resources */,
 				8FCBD75D1E6EDBF1005E5FC2 /* LaunchScreen.storyboard in Resources */,
 				8FCBD75A1E6EDBF1005E5FC2 /* Assets.xcassets in Resources */,
+				8FFD6C1A1E73122400654AF5 /* Action.png in Resources */,
+				8FFD6C121E7307C800654AF5 /* Yellow.png in Resources */,
+				8FFD6C181E73116B00654AF5 /* PlayToken.png in Resources */,
 				8FFD6C041E72440000654AF5 /* 316898__jaz-the-man-2__do.wav in Resources */,
 				8FFD6C071E72440000654AF5 /* 316904__jaz-the-man-2__fa.wav in Resources */,
 				8FFD6C0B1E72440000654AF5 /* 316913__jaz-the-man-2__si.wav in Resources */,
 				8FCBD7551E6EDBF1005E5FC2 /* Main.storyboard in Resources */,
+				8FFD6C161E7310A200654AF5 /* Boarder.png in Resources */,
 				8FFD6C051E72440000654AF5 /* 316901__jaz-the-man-2__do-octave.wav in Resources */,
 				8FFD6C081E72440000654AF5 /* 316906__jaz-the-man-2__mi.wav in Resources */,
+				8FFD6C141E7307C800654AF5 /* Red.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
