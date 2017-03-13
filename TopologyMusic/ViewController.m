@@ -44,6 +44,10 @@
 @property (weak, nonatomic) IBOutlet CustomButton *btn52;
 @property (weak, nonatomic) IBOutlet CustomButton *btn53;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnTopology;
+@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
+@property (weak, nonatomic) IBOutlet UIButton *btnCaculate;
+
 @end
 
 @implementation ViewController
@@ -194,21 +198,33 @@
 }
 
 - (IBAction)actionTopology:(id)sender {
+    
+    [self disableButton];
     [self resetNodes];
     isCreateNode = YES;
+    isCreateMinPath = NO;
+    [self enableButton];
 }
 
 - (IBAction)actionPlay:(id)sender {
     
+   
     if (!isCreateMinPath) {
         [self actionCaculate:NULL];
     }
     
-    NSArray *minPath = [[NodeManager getInstance] getMinPathList];
-    for (Node *node in minPath) {
-        [AudioManager playTone:node.value];
-        sleep(1);
-    }
+    [self disableButton];
+    [Utility performInBackground:@"play_voice" executeBlock:^{
+        NSArray *minPath = [[NodeManager getInstance] getMinPathList];
+        for (Node *node in minPath) {
+            [AudioManager playTone:node.value];
+            sleep(1);
+        }
+        
+        [Utility performInMainThread:^{
+            [self enableButton];
+        }];
+    }];
 }
 
 - (IBAction)actionCaculate:(id)sender {
@@ -217,15 +233,33 @@
         [self actionTopology:NULL];
     }
     
+    [self disableButton];
     [[NodeManager getInstance] actionCaculateMinPath];
     [self drawArrowLine];
     isCreateMinPath = YES;
+    [self enableButton];
 }
 
 - (void) actionPlayTone:(id)sender {
     
     CustomButton *btn = sender;
     [AudioManager playTone:btn.node.value];
+}
+
+- (void) disableButton {
+    [self controlButton:NO];
+}
+
+- (void) enableButton {
+    [self controlButton:YES];
+}
+
+- (void) controlButton:(BOOL)enable {
+    
+    [_btnTopology setEnabled:enable];
+    [_btnPlay setEnabled:enable];
+    [_btnCaculate setEnabled:enable];
+
 }
 
 @end

@@ -218,8 +218,11 @@
                         <outlet property="btn51" destination="ZCc-Wr-cs7" id="kvO-Ed-c9U"/>
                         <outlet property="btn52" destination="alG-0J-YvO" id="xOz-qv-rq8"/>
                         <outlet property="btn53" destination="h72-a5-tzB" id="w0R-iH-vK9"/>
+                        <outlet property="btnCaculate" destination="0BC-DA-I3S" id="J8x-YT-T5v"/>
                         <outlet property="btnEnd" destination="YUw-at-9Zj" id="5kM-DE-odp"/>
+                        <outlet property="btnPlay" destination="PdW-mD-zhU" id="N8N-fG-ux7"/>
                         <outlet property="btnStart" destination="vu7-LK-wM2" id="TFk-fS-9E5"/>
+                        <outlet property="btnTopology" destination="RdP-3A-lhb" id="6SH-l9-iUv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
