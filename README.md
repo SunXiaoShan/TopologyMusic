@@ -16,3 +16,9 @@
   2. play button 按下後，發出紅色路徑上對應的 button 聲音<br/>
   <br/><br/>
 ![](https://github.com/SunXiaoShan/TopologyMusic/blob/master/gif/output.gif)
+
+
+TODO list
+1. uint test
+2. audio button action
+3. audio delegate
