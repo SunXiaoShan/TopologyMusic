@@ -19,6 +19,6 @@
 
 
 TODO list
-1. uint test
+1. unit test
 2. audio button action
 3. audio delegate
